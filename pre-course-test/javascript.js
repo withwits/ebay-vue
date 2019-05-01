@@ -1,14 +1,12 @@
 /*
-Test #1
+문제)
 아래의 API는 100개의 게시글에 대한 정보를 배열로 받을 수 있는 API입니다.
 https://jsonplaceholder.typicode.com/posts
 
-HTTP 통신 라이브러리로 위 API를 호출한 뒤
-특정 userId에 해당하는 변수를 다음과 같이 만듭니다.
+HTTP 통신 라이브러리로 위 API를 호출한 뒤 특정 userId에 해당하는 변수를 다음과 같이 만듭니다.
 ex) userId가 1이면 변수 이름은 user1
 
-게시글 정보 중 해당 userId에 해당하는 게시글의 title 정보만 모아
-아래와 같이 객체 형태로 저장합니다.
+게시글 정보 중 해당 userId에 해당하는 게시글의 title 정보만 모아 아래와 같이 객체 형태로 저장합니다.
 ex) user1 = {
   title1: '',
   title2: '',
