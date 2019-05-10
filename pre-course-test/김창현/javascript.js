@@ -50,3 +50,54 @@ var user2 = {
 */
 
 // TODO: 아래에 답안을 작성해주세요.
+
+
+
+var requestHttp = function(method, url) {
+	return new Promise(function(resolve, reject){
+		var xhr = new XMLHttpRequest();
+		xhr.open(method, url);
+		xhr.onload = () => resolve(xhr.responseText);
+		xhr.onerror = () => reject(xhr.statusText);
+		xhr.send();
+	});
+};
+
+requestHttp("GET", "https://jsonplaceholder.typicode.com/posts")
+.then(function(responseText){
+	//console.log(responseText);
+	
+	var datas = JSON.parse(responseText);	
+	//console.log(datas);
+
+	var reducer = function(accumulator, value){		
+		var user = 'user' + value.userId;
+		
+		var title = new String('title');
+		if(accumulator.hasOwnProperty(user)){
+			title = title.concat((Object.keys(accumulator[user]).length + 1));
+			
+			accumulator[user][title] = value.title;
+		}else {
+			title = title.concat('1');
+			
+			accumulator[user] = {};
+			accumulator[user][title] = value.title;
+		}
+		
+		return accumulator;
+	}
+	var initialValue = {};
+	var result = datas.reduce(reducer, initialValue);
+	console.log(result);
+})
+.catch(function(statusText){
+	console.log(statusText);
+});
+
+
+
+
+
+
+
